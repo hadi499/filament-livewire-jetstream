@@ -1,7 +1,11 @@
-<div class="py-4">
+<div>
+    <div>
+        <livewire:search-box />
+    </div>
     <div class="mb-6 flex justify-end">
         <a href="/dashboard/create" class="bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-800 text-white">Create</a>
     </div>
+
     <table class="min-w-full bg-white border border-gray-300">
         <thead class="bg-blue-50 ">
             <tr>
@@ -13,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($posts as $post)
+            @foreach ($this->posts as $post)
             <tr class="bg-slate-50" wire:key="post-{{ $post->id }}">
                 <td class="px-4 py-2 border">{{$post->title}}</td>
                 <td class="px-4 py-2 border ">
@@ -35,7 +39,7 @@
     </table>
     <div class="my-3">
 
-        {{$posts->links()}}
+        {{$this->posts->links()}}
 
     </div>
 
