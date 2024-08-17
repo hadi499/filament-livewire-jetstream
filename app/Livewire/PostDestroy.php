@@ -23,12 +23,10 @@ class PostDestroy extends Component
 
     public function destroy()
     {
-        if ($this->post->image) {
-            Storage::delete($this->post->image);
-        }
+        // if ($this->post->image) {
+        //     Storage::delete($this->post->image);
+        // }
         $this->post->delete();
-
-        session()->flash('success', 'Post has been deleted!');
         return redirect()->route('dashboard');
     }
 

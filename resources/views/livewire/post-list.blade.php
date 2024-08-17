@@ -14,18 +14,18 @@
         </thead>
         <tbody>
             @foreach ($posts as $post)
-            <tr class="bg-slate-50">
+            <tr class="bg-slate-50" wire:key="post-{{ $post->id }}">
                 <td class="px-4 py-2 border">{{$post->title}}</td>
                 <td class="px-4 py-2 border ">
                     <img src="{{ asset('storage/' . $post->image) }}" class="w-10" alt="...">
                 </td>
                 <td class="px-4 py-2 border">{{$post->slug}}</td>
-                <td class="px-4 py-2 border">{{ $post->getExcerpt() }}</td>
+                <td class="px-4 py-2 border">{!! $post->getExcerpt() !!}</td>
                 <td class="px-4 py-2 border">
                     <div class="flex flex-row divide-y items-center gap-3 divide-gray-200">
                         <a wire:navigate href="{{ route('dashboard.edit', $post->slug) }}" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-600">Edit</a>
                         <a wire:navigate href="{{ route('dashboard.show', $post->slug) }}" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-blue-600">Detail</a>
-                        <livewire:post-destroy :post="$post" />
+                        <livewire:post-destroy :post="$post" wire:key="post-destroy-{{ $post->id }}" />
                     </div>
                 </td>
             </tr>
@@ -33,6 +33,11 @@
 
         </tbody>
     </table>
+    <div class="my-3">
+
+        {{$posts->links()}}
+
+    </div>
 
 
 </div>

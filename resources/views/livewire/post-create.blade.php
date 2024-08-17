@@ -4,6 +4,11 @@
         <div class="flex flex-col gap-1">
             <label for="title">Title</label>
             <input type="text" id="title" wire:model="title" class="rounded-md">
+            @error('title')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
         </div>
         <div class="flex flex-col gap-1">
             <label for="image" class="form-label">Image</label>
@@ -21,10 +26,15 @@
             </select>
 
         </div>
-        <div class="flex flex-col gap-1" wire:ingnore>
-            <label for="body" class="form-label">Body</label>
-            <input id="body" type="hidden" name="body">
+        <div class="flex flex-col gap-1">
+            <label for="body" class="">Body</label>
+            <input id="body" type="hidden" name="body" wire:init="body" value="{{$this->body}}">
             <trix-editor input="body" class="bg-white rounded-md"></trix-editor>
+            @error('body')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
         </div>
         <div class="ml-auto mt-3">
             <button type="submit" class="py-1 px-3 bg-blue-300 rounded-md hover:bg-blue-800 hover:text-white">Create</button>

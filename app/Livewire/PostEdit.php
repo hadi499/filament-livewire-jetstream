@@ -59,16 +59,20 @@ class PostEdit extends Component
     {
         $validatedData = $this->validate();
 
+        // if ($this->image) {
+        //     if ($this->oldImage) {
+        //         Storage::delete($this->oldImage);
+        //     }
+        //     $validatedData['image'] = $this->image->store('post-images');
+        // } else {
+        //     $validatedData['image'] = $this->oldImage;
+        // }
         if ($this->image) {
-            if ($this->oldImage) {
-                Storage::delete($this->oldImage);
-            }
             $validatedData['image'] = $this->image->store('post-images');
         } else {
             $validatedData['image'] = $this->oldImage;
         }
 
-        $validatedData['user_id'] = auth()->user()->id;
 
         $this->post->update($validatedData);
 

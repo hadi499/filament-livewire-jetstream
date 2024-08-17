@@ -19,7 +19,7 @@ class DashboardController extends Controller
         return view(
             'dashboard.show',
             [
-                'post' => $post
+                'slug' => $post->slug
             ]
         );
     }
@@ -37,13 +37,13 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function destroy(Post $post)
-    {
+    // public function destroy(Post $post)
+    // {
 
-        if ($post->image) {
-            Storage::delete($post->image);
-        }
-        Post::destroy($post->id);
-        return redirect('dashboard')->with('success', 'post has been deleted!');
-    }
+    //     if ($post->image) {
+    //         Storage::delete($post->image);
+    //     }
+    //     Post::destroy($post->id);
+    //     return redirect('dashboard')->with('success', 'post has been deleted!');
+    // }
 }

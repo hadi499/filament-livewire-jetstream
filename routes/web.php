@@ -1,12 +1,15 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use League\Csv\Query\Row;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
 
 Route::middleware([
     'auth:sanctum',
@@ -21,3 +24,5 @@ Route::middleware([
     Route::get('/dashboard/{post:slug}', [DashboardController::class, 'show'])->name('dashboard.show');
     Route::get('/dashboard/{post:slug}/edit', [DashboardController::class, 'edit'])->name('dashboard.edit');
 });
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/{post:slug}', [HomeController::class, 'show'])->name('show');
