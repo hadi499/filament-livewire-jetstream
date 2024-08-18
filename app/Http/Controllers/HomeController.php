@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 
@@ -19,8 +20,15 @@ class HomeController extends Controller
         return view(
             'home.show',
             [
-                'post' => $post
+                'slug' => $post->slug
             ]
         );
+    }
+
+    public function postCategory(Category $category)
+    {
+        return view('home.category', [
+            'slug' => $category->slug
+        ]);
     }
 }

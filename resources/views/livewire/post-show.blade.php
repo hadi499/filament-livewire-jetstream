@@ -1,18 +1,28 @@
-<div class="flex flex-col gap-3">
-    <div class="text-2xl font-semibold">
-        {{$post->title}}
+<div>
+    <div class="flex flex-col gap-3">
+        <div class="text-2xl font-semibold">
+            {{$post->title}}
 
-    </div>
+        </div>
 
-    <img src="{{ asset('storage/' . $post->image) }}" class="w-[600px]" alt="...">
-    <div class="">
+        <img src="{{ asset('storage/' . $post->image) }}" class="w-[600px]" alt="...">
+        <div class="">
 
-        <span><strong>{{$post->category->name}}, </strong></span>
-        <span>{{$post->created_at}}</span>
+            <span><strong>{{$post->category->name}}, </strong></span>
+            <span>{{$post->created_at}}</span>
 
-    </div>
+        </div>
 
-    <div class="text-lg">
+
         {!! $post->body !!}
+
+        <div class="mt-5">
+            @auth
+            <livewire:comment :post="$post">
+                @else
+                <p class="text-lg italic">Mau komentar atau like , login dulu.</p>
+                @endauth
+        </div>
     </div>
+
 </div>

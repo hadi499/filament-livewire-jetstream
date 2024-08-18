@@ -26,3 +26,4 @@ Route::middleware([
 });
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/{post:slug}', [HomeController::class, 'show'])->name('show');
+Route::get('/category/{category:slug}', [HomeController::class, 'postCategory'])->name('post-category');

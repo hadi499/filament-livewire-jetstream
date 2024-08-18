@@ -24,7 +24,12 @@ class Post extends Model
 
     public function getExcerpt()
     {
-        return Str::limit(strip_tags($this->body), 30);
+        return Str::limit(strip_tags($this->body), 25);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
 

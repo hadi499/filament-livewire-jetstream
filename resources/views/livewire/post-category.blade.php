@@ -1,9 +1,7 @@
 <div>
-    <div class="mb-4">
-        <livewire:search-box />
-    </div>
 
     <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+
         @foreach ($this->posts as $post)
         <div class="bg-white overflow-hidden border shadow-md rounded-lg p-4">
 
@@ -12,15 +10,12 @@
 
             </a>
             <h2 class="text-xl font-semibold ">{{ $post->title }}</h2>
-            <p class="hover:text-blue-300 text-sm"># <a href="{{route('post-category', $post->category->slug)}}">{{$post->category->name}}</a>
+            <p class="hover:text-blue-300 text-sm"># {{$post->category->name}}</p>
             <p>{!! $post->getExcerpt() !!}</p>
         </div>
         @endforeach
     </div>
-    <div class="my-3">
 
-        {{$this->posts->links()}}
-
-    </div>
+</div>
 
 </div>
