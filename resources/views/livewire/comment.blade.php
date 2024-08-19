@@ -20,7 +20,7 @@
             </div>
         </form>
         @else
-        <div class="px-2" onclick="window.location.href='{{ route('login') }}'">
+        <div class="px-2" wire:click="redirectToLogin">
             <div class="mb-3">
                 <textarea wire:model.defer="body" rows="2"
                     class="w-full p-2 border rounded-lg @error('body') border-red-500 @enderror"
