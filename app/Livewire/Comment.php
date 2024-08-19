@@ -19,6 +19,11 @@ class Comment extends Component
         $this->post = $post;
     }
 
+    public function redirectToLogin()
+    {
+        return redirect()->route('login');
+    }
+
     public function store()
     {
         $this->validate(['body' => 'required']);
