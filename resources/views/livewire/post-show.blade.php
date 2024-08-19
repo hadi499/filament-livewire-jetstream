@@ -17,11 +17,9 @@
         {!! $post->body !!}
 
         <div class="mt-5">
-            @auth
+
             <livewire:comment :post="$post">
-                @else
-                <p class="text-lg italic">Mau komentar atau like , login dulu.</p>
-                @endauth
+
         </div>
     </div>
 
